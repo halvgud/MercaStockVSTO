@@ -1,0 +1,2 @@
+# MercaStockVSTO
+VSTO app
