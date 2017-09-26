@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab id="mercatto1" label="MercaStock"  insertAfterMso="TabView">
+        <group id="myGroupDD" label="Ajuste de Inventario">
+          
+          <button id="btAjustarInventario" label="Ajustar Inventario" imageMso="ClickToRunApplyUpdates" size="large" />
+        </group>
+        <group id="Reporte" label="Reportes">
+          <button id="btReporteInventarioPorDepartamento" label="Inventario por Departamento" imageMso="ConvertSmartArtMenu" size="large" onAction="ReporteInventarioDepartamento"  />
+          <button id="btReporteComparativo" label="Comparacion de Inventario Por Acertacion/Perdida" imageMso="CalculatedCurrency" size="large"  />
+          <button id="btReporteAjustesPorDepartamento" label="Reporte de Ajustes por Departamento" imageMso="ResolveConflictOrError" size="large" />
+          
+        </group>
+        <!--<group id ="recetario" label="Recetario">
+          <button id="btAbrirRecetario" label="Abrir panel de recetas" imageMso="ArrangeByCreatedDate" size="large" onAction="AbrirRecetario" getEnabled="BuscarPermiso"/>
+          <button id ="btCrearReceta" label="Agregar y editar receta" imageMso="ArrangeByStore" size="large" onAction="CrearReceta" getEnabled="BuscarPermiso"/>
+        <button id ="btReporteDia" label="Reporte de Cocina" imageMso="ArrangeByStore" size="large" onAction="CrearReceta" getEnabled="BuscarPermiso"/>
+        </group>-->
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+
