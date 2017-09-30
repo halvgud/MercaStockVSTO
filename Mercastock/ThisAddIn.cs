@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Xml.Linq;
+using Entidad;
+using Herramienta.Config.Externa;
 using Excel = Microsoft.Office.Interop.Excel;
-using Office = Microsoft.Office.Core;
-using Microsoft.Office.Tools.Excel;
+
 
 
 namespace Mercastock
@@ -67,6 +66,11 @@ namespace Mercastock
             {
                 _sheet1.Unprotect();
             }
+        }
+
+        public void DetalleDepartamento(List<DepartamentoDetalle> listaDetalleCabecero)
+        {
+            
         }
         #region Código generado por VSTO
 

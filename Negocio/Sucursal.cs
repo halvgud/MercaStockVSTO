@@ -10,7 +10,6 @@ namespace Negocio
   public  class Sucursal
     {
         public static void Consultar(Action<IRestResponse> callback)
-        
         {
             try
             {
