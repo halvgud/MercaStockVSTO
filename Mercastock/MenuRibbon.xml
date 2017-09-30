@@ -5,7 +5,7 @@
       <tab id="mercatto1" label="MercaStock"  insertAfterMso="TabView">
         <group id="myGroupDD" label="Ajuste de Inventario">
           
-          <button id="btAjustarInventario" label="Ajustar Inventario" imageMso="ClickToRunApplyUpdates" size="large" />
+          <button id="btAjustarInventario" label="Ajustar Inventario" imageMso="ClickToRunApplyUpdates" size="large" onAction="AjustarInventario" />
         </group>
         <group id="Reporte" label="Reportes">
           <button id="btReporteInventarioPorDepartamento" label="Inventario por Departamento" imageMso="ConvertSmartArtMenu" size="large" onAction="ReporteInventarioDepartamento"  />

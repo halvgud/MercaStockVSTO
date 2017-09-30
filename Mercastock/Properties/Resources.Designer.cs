@@ -59,5 +59,15 @@ namespace Mercastock.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] FICHA_RECETA {
+            get {
+                object obj = ResourceManager.GetObject("FICHA_RECETA", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

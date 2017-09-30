@@ -63,8 +63,12 @@ namespace Mercastock
             rdc.Show();
         }
 
-        
-        
+        public void AjustarInventario(Office.IRibbonControl control)
+        {
+            Globals.ThisAddIn.AjustarInventario(null);
+        }
+
+
 
 
         public bool BuscarPermiso(Office.IRibbonControl control)
