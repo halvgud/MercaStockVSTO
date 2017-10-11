@@ -13,9 +13,9 @@ namespace Mercastock.Formularios
     public partial class ReporteInventarioporSucursal : Form
     {
         private List<DepartamentoDetalle> _listadetalle;
-        public ReporteInventarioporSucursal(List<DepartamentoDetalle> listadetalle)
+        public ReporteInventarioporSucursal()
         {
-            _listadetalle = listadetalle;
+            _listadetalle =new List<DepartamentoDetalle>();
             InitializeComponent();
             Sucursal.Consultar(json => {
                 Opcion.CargarComboBox(this, cbSucursales,json);
@@ -71,6 +71,8 @@ namespace Mercastock.Formularios
                 Departamento.DetalleDepartamento(json =>
                 {
                    _listadetalle=Opcion.JsonaListaGenerica<DepartamentoDetalle>(json);
+                    var addIn = Globals.ThisAddIn;
+                    addIn.DetalleDepartamento(_listadetalle);
                 },
                 new ReporteGenerico
                 {
@@ -80,13 +82,13 @@ namespace Mercastock.Formularios
                     fecha = dtFechaFin.Value,
                     busqueda =1,
                     idConcepto =2
-
-                });
-                
+                });   
             }
+        }
 
-            var addIn = Globals.ThisAddIn;
-            addIn.DetalleDepartamento(_listadetalle);
+        private void ReporteInventarioporSucursal_Load(object sender, EventArgs e)
+        {
+            dtFechaIni.Value = dtFechaFin.Value.AddDays(-30);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Herramienta
 
             public static class Api
             {
-                public static string UrlApi { get; set; } ="http://mercastock.mercatto.mx/API2/public/";
+                public static string UrlApi { get; set; } = "http://mercastock.mercatto.mx/API2/public/";
                 public static string IdSucursal { get; set; } = Properties.Settings.Default.IdSucursal;
             }
             public static class Articulo

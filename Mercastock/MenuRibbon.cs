@@ -57,7 +57,7 @@ namespace Mercastock
         }
 
         readonly Dictionary<string, bool> _listaBools = new Dictionary<string, bool>();
-        public void ReporteInventarioporSucursal(Office.IRibbonControl control)
+        public void ReporteInventarioporSucursal(Object control)
         {
             ReporteInventarioporSucursal rdc = new ReporteInventarioporSucursal();
             rdc.Show();
@@ -77,7 +77,7 @@ namespace Mercastock
             _listaBools[id] = isEnabled;
             _ribbon.Invalidate();
         }
-        public void AbrirConfiguracion(Office.IRibbonControl control)
+        public void AbrirConfiguracion(Object control)
         {
 
             _ribbon.Invalidate();
@@ -103,5 +103,10 @@ namespace Mercastock
         }
 
         #endregion
+
+        public void AbrirRecetario(Object control)
+        {
+           //hisAddIn.AgregaraLista.Visible = true;
+        }
     }
 }

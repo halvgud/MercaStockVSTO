@@ -195,6 +195,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "ReporteInventarioporSucursal";
             this.Text = "ReporteDepartamentoCabecero";
+            this.Load += new System.EventHandler(this.ReporteInventarioporSucursal_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
