@@ -24,7 +24,7 @@ namespace Herramienta
 
             public static class Api
             {
-                public static string UrlApi { get; set; } = "http://mercastock.mercatto.mx/API/public/";
+                public static string UrlApi { get; set; } ="http://mercastock.mercatto.mx/API2/public/";
                 public static string IdSucursal { get; set; } = Properties.Settings.Default.IdSucursal;
             }
             public static class Articulo
@@ -48,11 +48,16 @@ namespace Herramienta
                 public static string Lista { get; set; } = Properties.Settings.Default.CategoriaLista;
             }
 
-           
+
 
             public static class Departamento
             {
                 public static string InventarioPorDepartamento { get; set; } = "inventario/reporte/cabecero";
+                public static string DepartamentoDetalle { get; set; } = "inventario/reporte/detalle";
+            }
+            public static class AjusteInventario
+            {
+                public static string Consultar { get; set; } = "ajuste/seleccionar/todo";
             }
             public static class Parametro
             {

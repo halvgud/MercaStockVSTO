@@ -8,10 +8,9 @@
           <button id="btAjustarInventario" label="Ajustar Inventario" imageMso="ClickToRunApplyUpdates" size="large" onAction="AjustarInventario" />
         </group>
         <group id="Reporte" label="Reportes">
-          <button id="btReporteInventarioPorDepartamento" label="Inventario por Departamento" imageMso="ConvertSmartArtMenu" size="large" onAction="ReporteInventarioDepartamento"  />
-          <button id="btReporteComparativo" label="Comparacion de Inventario Por Acertacion/Perdida" imageMso="CalculatedCurrency" size="large"  />
-          <button id="btReporteAjustesPorDepartamento" label="Reporte de Ajustes por Departamento" imageMso="ResolveConflictOrError" size="large" />
-          
+          <button id="btReporteInventarioPorDepartamento" label="Inventario por Sucursal" imageMso="ConvertSmartArtMenu" size="large" onAction="ReporteInventarioporSucursal"/>
+          <button id="btReporteComparativo" label="Comparativo de Inventario Por Acertacion/Perdida" imageMso="CalculatedCurrency" size="large"  />
+        <button id="btReporteGernerarInventario" label="Generar Inventario" imageMso="ResolveConflictOrError" size="large" />
         </group>
         <!--<group id ="recetario" label="Recetario">
           <button id="btAbrirRecetario" label="Abrir panel de recetas" imageMso="ArrangeByCreatedDate" size="large" onAction="AbrirRecetario" getEnabled="BuscarPermiso"/>

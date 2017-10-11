@@ -57,15 +57,22 @@ namespace Mercastock
         }
 
         readonly Dictionary<string, bool> _listaBools = new Dictionary<string, bool>();
-        public void ReporteInventarioDepartamento(Office.IRibbonControl control)
+        public void ReporteInventarioporSucursal(Office.IRibbonControl control)
         {
-            ReporteDepartamentoCabecero rdc = new ReporteDepartamentoCabecero();
+            ReporteInventarioporSucursal rdc = new ReporteInventarioporSucursal(null);
             rdc.Show();
         }
 
         public void AjustarInventario(Office.IRibbonControl control)
         {
-            Globals.ThisAddIn.AjustarInventario(null);
+            Negocio.AjusteInventario.Consultar(json =>
+            {
+                Globals.ThisAddIn.AjustarInventario(json);
+            },new {
+                idSucursal=2,
+                fecha=DateTime.Now
+            });
+            
         }
 
 

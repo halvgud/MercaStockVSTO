@@ -132,6 +132,23 @@ namespace Herramienta
                 return x;
             }
         }
+        public static List<T> JsonaObjetoGenerica<T>(IRestResponse json)
+        {
+            List<T> x = new List<T>();
+            // List<Entidad.ClaseGenerica<T>> xy = new List<Entidad.ClaseGenerica<T>>();
+            try
+            {
+                
+                dynamic xy = JsonConvert.DeserializeObject(json.Content);
+                x = xy.data;
+                return x;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return x;
+            }
+        }
         public static T JsonaClaseGenerica<T>(IRestResponse json) where T : new()
         {
            T x = new T();

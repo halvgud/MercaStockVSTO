@@ -26,6 +26,24 @@ namespace Negocio
                 // callback("CONTINUAR");
             }
         }
+        public static void DetalleDepartamento(Action<IRestResponse> callback, object parametros)
+
+        {
+            try
+            {
+                var rest = new Rest(Externa.Api.UrlApi,
+                    Externa.Departamento.DepartamentoDetalle,
+                    Method.POST,
+                    callback,
+                    parametros
+                    );
+            }
+            catch (Exception e)
+            {
+                Opcion.Log(Log.Interno.Categoria, "EXCEPCION: " + e.Message);
+                // callback("CONTINUAR");
+            }
+        }
 
     }
 }

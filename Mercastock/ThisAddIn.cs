@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Xml.Linq;
+using Entidad;
 using Excel = Microsoft.Office.Interop.Excel;
 using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Excel;
@@ -11,6 +10,9 @@ using Herramienta;
 using RestSharp;
 using System.IO;
 using System.Reflection;
+
+
+
 
 namespace Mercastock
 {
@@ -104,7 +106,7 @@ namespace Mercastock
        public void AjustarInventario(IRestResponse restResponse)
         {
             Application.ScreenUpdating = false;
-            var rrg = Opcion.JsonaListaGenerica<Entidad.ReporteGenerico>(restResponse);
+            var rrg = Opcion.JsonaListaGenerica<AjusteArticulo>(restResponse);
             _rowCount = (rrg.Count + 1);
             _reporte = InicializarExcelConTemplate("AjusteInventario"); //TODO traer de la base de datos 
             var list = new List<string> { "P-1", "P-.5", "PD", "1", "4", "DESCONOCIDO" };//TODO traer de la base de datos
@@ -114,21 +116,12 @@ namespace Mercastock
                 try
                 {
                     Application.Cells.Locked = false;
-                    var oRng = _reporte.Range["A1", "T" + (rrg.Count + 1)];
+                    var oRng = _reporte.Range["A1", "I" + (rrg.Count + 1)];
                     oRng.Cells.AutoFilter(1, Type.Missing, Excel.XlAutoFilterOperator.xlAnd, Type.Missing, true);
-                    _reporte.Range[
-                        "A" + 2 + ":T" + Globals.ThisAddIn.Application.ActiveSheet.Cells.Find("*", Missing.Value,
-                            Missing.Value, Missing.Value, Excel.XlSearchOrder.xlByRows,
-                           Excel.XlSearchDirection.xlPrevious, false, Missing.Value,
-                            Missing.Value)
-                            .Row].Value2 = "";
-                   // _reporte.Range["A" + 2 + ":T" + _rowCount].Value2 = InicializarLista(rrg);
-                    _reporte.Range["F" + 2 + ":F" + _rowCount].NumberFormat = "0.0";
-                    _reporte.Range["T" + 2 + ":T" + _rowCount].NumberFormat = "0.000";
-                    _reporte.Range["E" + 2 + ":E" + _rowCount].Validation.Delete();
-                    _reporte.Range["E" + 2 + ":E" + _rowCount].Validation.Add(Excel.XlDVType.xlValidateList,
-                    Excel.XlDVAlertStyle.xlValidAlertInformation, Excel.XlFormatConditionOperator.xlBetween, flatList, Type.Missing);
-                   
+                    _sheet1.Protect(AllowSorting: true, AllowFiltering: true, UserInterfaceOnly: true);
+                    _reporte.Range["A" + 2 + ":T" + _rowCount].Value2 = InicializarLista(rrg);
+                    Application.ScreenUpdating = true;
+                    
                 }
                 catch (Exception e)
                 {
@@ -139,6 +132,29 @@ namespace Mercastock
             {
               //  MessageBox.Show(@"No se encontraron resultados con la busqueda indicada");
             }
+
+        }
+        private static object[,] InicializarLista(List<AjusteArticulo> rrg)
+        {
+            var lista = new object[rrg.Count, 20];
+            for (var x = 0; x < rrg.Count; x++)
+            {
+                lista[x, 0] = rrg[x].fechaSolicitud + "";
+                lista[x, 1] = rrg[x].Clave;
+                lista[x, 2] = rrg[x].Descripcion;
+                lista[x, 3] = rrg[x].CostoActual;
+                lista[x, 4] = rrg[x].ExistenciaEjecucion;
+                lista[x, 5] = rrg[x].ExistenciaRespuesta;
+                lista[x, 6] = rrg[x].Diferencia;
+                lista[x, 7] = rrg[x].CostoActual;
+                lista[x, 8] = rrg[x].Existencia;
+               
+            }
+            return lista;
+        }
+        public void DetalleDepartamento(List<DepartamentoDetalle> listaDetalleCabecero)
+        {
+            
         }
         #region Código generado por VSTO
 

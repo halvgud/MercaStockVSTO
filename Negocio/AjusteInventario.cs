@@ -4,20 +4,20 @@ using Herramienta.Config;
 using Datos;
 using RestSharp;
 
-
 namespace Negocio
 {
-  public  class Sucursal
+   public class AjusteInventario
     {
-        public static void Consultar(Action<IRestResponse> callback)
+        public static void Consultar(Action<IRestResponse> callback, object parametros)
+
         {
             try
             {
-                var rest = new Rest(Externa.Api.UrlApi, 
-                    Externa.Sucursal.Seleccionar, 
-                    Method.POST, 
+                var rest = new Rest(Externa.Api.UrlApi,
+                   Externa.AjusteInventario.Consultar,
+                    Method.POST,
                     callback,
-                    new{idGenerico =1}
+                    parametros
                     );
             }
             catch (Exception e)
@@ -26,6 +26,5 @@ namespace Negocio
                 // callback("CONTINUAR");
             }
         }
-
     }
 }

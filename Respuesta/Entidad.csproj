@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjusteArticulo.cs" />
     <Compile Include="Articulo.cs" />
     <Compile Include="ClaseGenerica.cs" />
+    <Compile Include="DepartamentoCabecero.cs" />
     <Compile Include="Generico.cs" />
     <Compile Include="Permiso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -146,11 +146,14 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\VSTOexcelRest\Data\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="RestSharp">
-      <HintPath>..\..\..\..\..\..\..\GIT\VSTOexcelRest\testVSTO2\bin\Debug\RestSharp.dll</HintPath>
+      <HintPath>..\..\VSTOexcelRest\testVSTO2\bin\Debug\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -185,18 +188,18 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="Formularios\ReporteDepartamentoCabecero.cs">
+    <Compile Include="Formularios\ReporteInventarioporSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\ReporteDepartamentoCabecero.Designer.cs">
-      <DependentUpon>ReporteDepartamentoCabecero.cs</DependentUpon>
+    <Compile Include="Formularios\ReporteInventarioporSucursal.Designer.cs">
+      <DependentUpon>ReporteInventarioporSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuRibbon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="Formularios\ReporteDepartamentoCabecero.resx">
-      <DependentUpon>ReporteDepartamentoCabecero.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\ReporteInventarioporSucursal.resx">
+      <DependentUpon>ReporteInventarioporSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -221,6 +224,7 @@
       <SubType>Code</SubType>
     </Compile>
     <None Include="Resources\FICHA RECETA.xlsx" />
+    <None Include="Resources\TABLASMERCASTOCK.xlsx" />
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.cs</DependentUpon>
     </None>
@@ -248,6 +252,7 @@
       <Name>Entidad</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
