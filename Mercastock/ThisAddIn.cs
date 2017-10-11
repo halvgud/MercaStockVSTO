@@ -33,10 +33,10 @@ namespace Mercastock
 
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
-            _objeto = new List<Objeto> {
-            new Objeto { Nombre = "ReporteInventario"},
-            new Objeto { Nombre= "ReporteInventarioImprimir" }
-            };
+            //_objeto = new List<Objeto> {
+            //new Objeto { Nombre = "ReporteInventario"},
+            //new Objeto { Nombre= "ReporteInventarioImprimir" }
+            //};
             Application.WorkbookActivate +=
            Application_ActiveWorkbookChanges;
             Application.WorkbookDeactivate += Application_ActiveWorkbookChanges;
@@ -49,8 +49,7 @@ namespace Mercastock
         }
         void Application_ActiveWorkbookChanges(Excel.Workbook wb)
         {
-            // TODO: Active Workbook has changed. Ribbon should be updated.    
-            wb.Unprotect();
+            // TODO: Active Workbook has changed. Ribbon should be updated.   
         }
         void activeSheet_SelectionChange(object sh, Excel.Range target)
         {
@@ -88,7 +87,10 @@ namespace Mercastock
                 {
                     var ows = Application.Worksheets[1];// excel actual
                     var sPath = Path.GetTempFileName(); // archivo temporal
+
                     File.WriteAllBytes(sPath, Properties.Resources.FICHA_RECETA);//se copia el template
+                  //  File.WriteAllBytes(sPath, Properties.Resources.TABLASMERCASTOCK);//se copia el template
+
                     var oTemplate = Application.Workbooks.Add(sPath); //path del template temporal  
                     var worksheet = oTemplate.Worksheets[nombreHoja] as Excel.Worksheet;//descripcion del template
                     worksheet?.Copy(After: ows); oTemplate.Close(false, missing, missing);
@@ -103,30 +105,32 @@ namespace Mercastock
             }
             return _reporte;
         }
-       public void AjustarInventario(IRestResponse restResponse)
+
+        public void AjustarInventario(IRestResponse restResponse)
         {
             Application.ScreenUpdating = false;
-            var rrg = Opcion.JsonaListaGenerica<AjusteArticulo>(restResponse);
+            var rrg = Opcion.JsonaListaGenerica<Entidad.ReporteGenerico>(restResponse);
             _rowCount = (rrg.Count + 1);
             _reporte = InicializarExcelConTemplate("AjusteInventario"); //TODO traer de la base de datos 
             var list = new List<string> { "P-1", "P-.5", "PD", "1", "4", "DESCONOCIDO" };//TODO traer de la base de datos
             var flatList = string.Join(",", list.ToArray());
             if (_reporte != null)
             {
-                try
-                {
-                    Application.Cells.Locked = false;
-                    var oRng = _reporte.Range["A1", "I" + (rrg.Count + 1)];
+                    var oRng = _reporte.Range["A1", "T" + (rrg.Count + 1)];
                     oRng.Cells.AutoFilter(1, Type.Missing, Excel.XlAutoFilterOperator.xlAnd, Type.Missing, true);
-                    _sheet1.Protect(AllowSorting: true, AllowFiltering: true, UserInterfaceOnly: true);
-                    _reporte.Range["A" + 2 + ":T" + _rowCount].Value2 = InicializarLista(rrg);
-                    Application.ScreenUpdating = true;
-                    
-                }
-                catch (Exception e)
-                {
-                  //  MessageBox.Show(e.Message);
-                }
+                    _reporte.Range[
+                        "A" + 2 + ":T" + Globals.ThisAddIn.Application.ActiveSheet.Cells.Find("*", Missing.Value,
+                            Missing.Value, Missing.Value, Excel.XlSearchOrder.xlByRows,
+                           Excel.XlSearchDirection.xlPrevious, false, Missing.Value,
+                            Missing.Value)
+                            .Row].Value2 = "";
+                    // _reporte.Range["A" + 2 + ":T" + _rowCount].Value2 = InicializarLista(rrg);
+                    _reporte.Range["F" + 2 + ":F" + _rowCount].NumberFormat = "0.0";
+                    _reporte.Range["T" + 2 + ":T" + _rowCount].NumberFormat = "0.000";
+                    _reporte.Range["E" + 2 + ":E" + _rowCount].Validation.Delete();
+                    _reporte.Range["E" + 2 + ":E" + _rowCount].Validation.Add(Excel.XlDVType.xlValidateList,
+                    Excel.XlDVAlertStyle.xlValidAlertInformation, Excel.XlFormatConditionOperator.xlBetween, flatList, Type.Missing);
+
             }
             else
             {
@@ -152,9 +156,12 @@ namespace Mercastock
             }
             return lista;
         }
+
+
+        
         public void DetalleDepartamento(List<DepartamentoDetalle> listaDetalleCabecero)
         {
-            
+
         }
         #region Código generado por VSTO
 
