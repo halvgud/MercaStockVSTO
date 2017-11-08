@@ -59,7 +59,7 @@ namespace Mercastock
         readonly Dictionary<string, bool> _listaBools = new Dictionary<string, bool>();
         public void ReporteInventarioporSucursal(Object control)
         {
-            ReporteInventarioporSucursal rdc = new ReporteInventarioporSucursal(null);
+            ReporteInventarioporSucursal rdc = new ReporteInventarioporSucursal();
             rdc.Show();
         }
 

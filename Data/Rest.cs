@@ -25,7 +25,7 @@ namespace Datos
             Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
                     Constantes.Http.TipoDeContenido.Json);
             Peticion.AddHeader(Constantes.Http.Autenticacion, "d93a1e0929c63a72d437ab44bcddcd60");
-            Cliente.ExecuteAsync(Peticion, response =>
+            Cliente.ExecuteAsync(Peticion,response =>
             {
                 switch (response.StatusCode)
                 {

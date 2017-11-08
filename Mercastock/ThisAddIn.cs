@@ -22,21 +22,18 @@ namespace Mercastock
      */
     public partial class ThisAddIn
     {
+        private List<Objeto> _objeto;
         public class Objeto
         {
             public String Nombre { get; set; }
-
         }
         Excel.Worksheet _sheet1;
-        private List<Objeto> _objeto;
-
-
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
-            //_objeto = new List<Objeto> {
-            //new Objeto { Nombre = "ReporteInventario"},
-            //new Objeto { Nombre= "ReporteInventarioImprimir" }
-            //};
+            _objeto = new List<Objeto> {
+            new Objeto { Nombre = "ReporteInventario"},
+            new Objeto { Nombre= "ReporteInventarioImprimir" }
+            };
             Application.WorkbookActivate +=
            Application_ActiveWorkbookChanges;
             Application.WorkbookDeactivate += Application_ActiveWorkbookChanges;
@@ -54,7 +51,7 @@ namespace Mercastock
         void activeSheet_SelectionChange(object sh, Excel.Range target)
         {
             _sheet1 = (Excel.Worksheet)sh;
-            if (target.Row != 1 && (_objeto.FirstOrDefault(x => x.Nombre == _sheet1.Name) != null))
+                if (target.Row != 1 && (_objeto.FirstOrDefault(x => x.Nombre == _sheet1.Name) != null))
             {
                 try
                 {
@@ -89,7 +86,7 @@ namespace Mercastock
                     var sPath = Path.GetTempFileName(); // archivo temporal
 
                     File.WriteAllBytes(sPath, Properties.Resources.FICHA_RECETA);//se copia el template
-                  //  File.WriteAllBytes(sPath, Properties.Resources.TABLASMERCASTOCK);//se copia el template
+                                                                                 //  File.WriteAllBytes(sPath, Properties.Resources.TABLASMERCASTOCK);//se copia el template
 
                     var oTemplate = Application.Workbooks.Add(sPath); //path del template temporal  
                     var worksheet = oTemplate.Worksheets[nombreHoja] as Excel.Worksheet;//descripcion del template
@@ -101,7 +98,7 @@ namespace Mercastock
             }
             catch (Exception e)
             {
-              //  MessageBox.Show(e.Message);
+                //  MessageBox.Show(e.Message);
             }
             return _reporte;
         }
@@ -176,7 +173,7 @@ namespace Mercastock
         }
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
-            return new MenuRibbon();
+             return new MenuRibbon();
         }
 
         #endregion

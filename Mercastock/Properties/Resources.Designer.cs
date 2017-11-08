@@ -61,13 +61,16 @@ namespace Mercastock.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
         internal static byte[] FICHA_RECETA {
             get {
                 object obj = ResourceManager.GetObject("FICHA_RECETA", resourceCulture);
-	}
+                return ((byte[])(obj));
+            }
         }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
         internal static byte[] TABLASMERCASTOCK {
