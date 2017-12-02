@@ -58,6 +58,7 @@ namespace Herramienta
             public static class AjusteInventario
             {
                 public static string Consultar { get; set; } = "ajuste/seleccionar/todo";
+                public static string Ajustar { get; set; } = "ajuste/insertar";
             }
             public static class Parametro
             {

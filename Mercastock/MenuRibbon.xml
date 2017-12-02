@@ -5,12 +5,17 @@
       <tab id="mercatto1" label="MercaStock"  insertAfterMso="TabView">
         <group id="myGroupDD" label="Ajuste de Inventario">
           
-          <button id="btAjustarInventario" label="Ajustar Inventario" imageMso="ClickToRunApplyUpdates" size="large" onAction="AjustarInventario" />
+          <button id="btAjustarInventario" label="Ajustar Inventario" imageMso="ClickToRunApplyUpdates" size="large" onAction="AjustarInventario" getEnabled="BuscarPermiso"/>
         </group>
         <group id="Reporte" label="Reportes">
-          <button id="btReporteInventarioPorDepartamento" label="Inventario por Sucursal" imageMso="ConvertSmartArtMenu" size="large" onAction="ReporteInventarioporSucursal"/>
-          <button id="btReporteComparativo" label="Comparativo de Inventario Por Acertacion/Perdida" imageMso="CalculatedCurrency" size="large"  />
-        <button id="btReporteGernerarInventario" label="Generar Inventario" imageMso="ResolveConflictOrError" size="large" />
+          <button id="btReporteInventarioPorDepartamento" label="Inventario por Sucursal" imageMso="ConvertSmartArtMenu" size="large" onAction="ReporteInventarioporSucursal" getEnabled="BuscarPermiso"/>
+          <button id="btReporteComparativo" label="Comparativo de Inventario Por Acertacion/Perdida" imageMso="CalculatedCurrency" size="large" getEnabled="BuscarPermiso" />
+        <button id="btReporteGernerarInventario" label="Generar Inventario" imageMso="ResolveConflictOrError" size="large" getEnabled="BuscarPermiso" />
+        </group>
+        <group id="botonesAjustes">
+          <button id="subtAjustarRojo" label="Ajustar Diferencia" imageMso="ConvertSmartArtMenu" getVisible="BuscarVisibilidad" onAction="AjusteRojos"/>
+          <button id="subtReconteoVerde" label="Reconteo" imageMso="ConvertSmartArtMenu" getVisible="BuscarVisibilidad"/>
+          <button id="subtProductoAlertaAzul" label="ProductoAlerta" imageMso="ConvertSmartArtMenu" getVisible="BuscarVisibilidad"/>
         </group>
         <!--<group id ="recetario" label="Recetario">
           <button id="btAbrirRecetario" label="Abrir panel de recetas" imageMso="ArrangeByCreatedDate" size="large" onAction="AbrirRecetario" getEnabled="BuscarPermiso"/>
