@@ -22,15 +22,12 @@ namespace Mercastock
      */
     public partial class ThisAddIn
     {
+        private List<Objeto> _objeto;
         public class Objeto
         {
             public String Nombre { get; set; }
-
         }
         Excel.Worksheet _sheet1;
-        private List<Objeto> _objeto;
-
-
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
             _objeto = new List<Objeto> {
@@ -73,7 +70,7 @@ namespace Mercastock
         void activeSheet_SelectionChange(object sh, Excel.Range target)
         {
             _sheet1 = (Excel.Worksheet)sh;
-            if (target.Row != 1 && (_objeto.FirstOrDefault(x => x.Nombre == _sheet1.Name) != null))
+                if (target.Row != 1 && (_objeto.FirstOrDefault(x => x.Nombre == _sheet1.Name) != null))
             {
                 try
                 {
@@ -196,7 +193,7 @@ namespace Mercastock
         }
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
-            return new MenuRibbon();
+             return new MenuRibbon();
         }
 
         #endregion
