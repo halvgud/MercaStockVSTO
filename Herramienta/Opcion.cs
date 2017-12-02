@@ -107,7 +107,6 @@ namespace Herramienta
             if (process != null)
             {
                 process.WaitForExit(timeout);
-               // var exitCode = process.ExitCode;
                 process.Close();
                 return 1;
             }
@@ -118,7 +117,6 @@ namespace Herramienta
         public static List<T> JsonaListaGenerica<T>(IRestResponse json)
         {
             List<T> x=new List<T>();
-           // List<Entidad.ClaseGenerica<T>> xy = new List<Entidad.ClaseGenerica<T>>();
             try
             {
                 var desSerializer = new JsonDeserializer();
@@ -135,7 +133,6 @@ namespace Herramienta
         public static List<T> JsonaObjetoGenerica<T>(IRestResponse json)
         {
             List<T> x = new List<T>();
-            // List<Entidad.ClaseGenerica<T>> xy = new List<Entidad.ClaseGenerica<T>>();
             try
             {
                 

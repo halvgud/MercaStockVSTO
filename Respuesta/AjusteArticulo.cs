@@ -8,14 +8,17 @@ namespace Entidad
 {
     public class AjusteArticulo
     {
-        public DateTime fechaSolicitud { get; set; }
-        public string Clave { get; set; }
-        public string Descripcion { get; set; }
-        public Double Costo { get; set; }
-        public Double ExistenciaEjecucion { get; set; }
-        public Double ExistenciaRespuesta { get; set; }
-        public Double Diferencia { get; set; }
-        public Double CostoActual { get; set; }
-        public Double Existencia { get; set; }
+        public double idInventario { get; set; }
+        public DateTime fechaSolicitud { get; set; } //1
+        public string Clave { get; set; }  //2
+        public string Descripcion { get; set; } //3
+        public Double Costo { get; set; } //4
+        public Double ExistenciaEjecucion { get; set; } //5
+        public Double ExistenciaRespuesta { get; set; } //6
+        public Double Diferencia { get; set; } //7
+        public Double CostoActual { get; set; }  //9
+        public Double Existencia { get; set; } //10
+        public string Ajustar { get; set; }//11
+        public Double idUsuario { get; set; }
     }
 }
