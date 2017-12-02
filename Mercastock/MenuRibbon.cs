@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using Mercastock;
-using Microsoft.Office.Interop.Excel;
-//using testVSTO2.Herramienta;
 using Office = Microsoft.Office.Core;
 using Mercastock.Formularios;
-//using testVSTO2.Respuesta;
 
 // TODO:  Siga estos pasos para habilitar el elemento (XML) de la cinta de opciones:
 
@@ -108,6 +102,7 @@ namespace Mercastock
                 using (var resourceReader = new StreamReader(asm.GetManifestResourceStream(t)))
                 {
                     return resourceReader.ReadToEnd();
+                    
                 }
             }
             return null;

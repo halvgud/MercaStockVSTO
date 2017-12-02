@@ -17,7 +17,7 @@ namespace Entidad
         public DateTime fecha { get; set; }
         public int concepto { get; set; }
         public  int departamento { get; set; }
-        public int busqueda { get; set; }
+        public string busqueda { get; set; }
         public int idConcepto { get; set; }
     }
 

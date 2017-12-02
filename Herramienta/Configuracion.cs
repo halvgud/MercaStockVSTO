@@ -12,19 +12,15 @@ namespace Herramienta
                 public static string Articulo { get; set; } = "articulo.log";
                 public static string Categoria { get; set; } = "categoria.log";
                 public static string Departamento { get; set; } = "departamento.log";
-            }
-
-            
+            }        
         }
-
-      
-
         public static class Externa
         {
 
             public static class Api
             {
-                public static string UrlApi { get; set; } = "http://mercastock.mercatto.mx/API2/public/";
+                public static string UrlApi { get; set; } = "http://localhost:8080/APIMercaStock/public/";
+                //public static string UrlApi { get; set; } = "http://mercastock.mercatto.mx/API2/public/";
                 public static string IdSucursal { get; set; } = Properties.Settings.Default.IdSucursal;
             }
             public static class Articulo

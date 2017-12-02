@@ -3,10 +3,10 @@
   <ribbon>
     <tabs>
       <tab id="mercatto1" label="MercaStock"  insertAfterMso="TabView">
-        <group id="myGroupDD" label="Ajuste de Inventario">
+        <!--<group id="myGroupDD" label="Ajuste de Inventario">
           
           <button id="btAjustarInventario" label="Ajustar Inventario" imageMso="ClickToRunApplyUpdates" size="large" onAction="AjustarInventario" />
-        </group>
+        </group>-->
         <group id="Reporte" label="Reportes">
           <button id="btReporteInventarioPorDepartamento" label="Inventario por Sucursal" imageMso="ConvertSmartArtMenu" size="large" onAction="ReporteInventarioporSucursal"/>
           <button id="btReporteComparativo" label="Comparativo de Inventario Por Acertacion/Perdida" imageMso="CalculatedCurrency" size="large"  />
